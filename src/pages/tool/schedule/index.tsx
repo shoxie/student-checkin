@@ -22,7 +22,7 @@ export default function Schedule() {
     return (
         <Timetable
             events={{
-                monday: [
+                "thứ 2": [
                     {
                         id: 1,
                         name: "Custom Event 1",
@@ -31,13 +31,18 @@ export default function Schedule() {
                         endTime: new Date("2018-02-23T13:30:00"),
                     },
                 ],
-                tuesday: [],
-                wednesday: [],
-                thursday: [],
-                friday: [],
+                "thứ 3": [],
+                "thứ 4": [],
+                "thứ 5": [],
+                "thứ 6": [],
+                "thứ 7": [],
             }}
-            style={{ height: '500px' }}
-            getDayLabel={ev => console.log(ev)}
+            hoursInterval={{
+                from: 7,
+                to: 18
+            }}
+            style={{ height: '100vh' }}
+            timeLabel=""
         />
     )
 }
