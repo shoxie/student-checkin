@@ -6,6 +6,7 @@ import { sidebarWidthAtom } from "@/Utils/atom";
 import { IoIdCard } from 'react-icons/io5'
 import { AiOutlineSchedule } from 'react-icons/ai'
 import Link from "next/link";
+import { BsDisplay, BsFillBellFill, BsJournalText } from "react-icons/bs";
 
 const navigation = [
     {
@@ -17,6 +18,21 @@ const navigation = [
         name: "Thời khóa biểu",
         href: "/tool/schedule",
         icon: AiOutlineSchedule,
+    },
+    {
+        name: "Bài giảng",
+        href: "/tool/schedule",
+        icon: BsJournalText,
+    },
+    {
+        name: "Học trực tuyến",
+        href: "/tool/schedule",
+        icon: BsDisplay,
+    },
+    {
+        name: "Thông báo",
+        href: "/tool/schedule",
+        icon: BsFillBellFill,
     },
 ]
 

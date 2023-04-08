@@ -77,7 +77,7 @@ const data =
 export default function Home() {
   return (
     <VStack justify={"center"}>
-      <Heading textTransform={"uppercase"}>Điểm danh bằng thẻ</Heading>
+      <Heading bgColor="gray.200" textTransform={"uppercase"} p={2} rounded="md">Điểm danh bằng thẻ</Heading>
       <Image src={CardSwipe.src} alt="CardSwipe" />
       <Box minW={"60%"} border="1px" borderColor={"gray.400"}>
         <Box bg="gray.200" py="3" px="5">
