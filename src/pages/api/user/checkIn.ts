@@ -15,7 +15,7 @@ export default async function handler(
   }
   const { body } = req;
 
-  const data = await prisma.user.findUnique({
+  const data = await prisma.user.findFirst({
     where: {
         uid: body.uid as string
     }
