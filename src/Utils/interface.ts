@@ -1,7 +1,12 @@
 export interface User {
-    name: string;
-    className: string;
-    email: string
+    createdAt: string;
+  email: string;
+  id: string;
+  name: string;
+  password: string;
+  role: string;
+  uid: string;
+  updatedAt: string;
 }
 
 export interface LayoutProps {

@@ -8,7 +8,7 @@ export default function TimeTableContainer({ data }: { data: any }) {
             events={data}
             hoursInterval={{
                 from: 7,
-                to: 18
+                to: 21
             }}
             style={{ height: '100vh', width: '100%' }}
             timeLabel=""

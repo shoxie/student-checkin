@@ -6,3 +6,14 @@ export type Notification = {
   action: Function;
   actionText?: string;
 };
+
+export type Class = {
+  createdAt: string;
+  endTime: string;
+  id: string;
+  name: string;
+  startTime: string;
+  subject: string;
+  updatedAt: string;
+  day: number;
+};

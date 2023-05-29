@@ -1,6 +1,9 @@
 import { Box, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react'
 import CardSwipe from '../../../../public/images/card-swipe.svg'
 import { AiOutlineCheck } from 'react-icons/ai'
+import { useAtom } from 'jotai'
+import { classesAtom, userAtom } from '@/Utils/atom'
+import { useEffect } from 'react'
 const data =
 {
   date: '2021-09-01',
@@ -75,6 +78,13 @@ const data =
 }
 
 export default function Home() {
+  const [classes] = useAtom(classesAtom)
+  const [user] = useAtom(userAtom)
+
+  useEffect(() => {
+    console.log("user", user)
+  }, [user])
+
   return (
     <VStack justify={"center"}>
       <Heading bgColor="gray.200" textTransform={"uppercase"} p={2} rounded="md">Điểm danh bằng thẻ</Heading>
@@ -100,6 +110,14 @@ export default function Home() {
           ))}
         </VStack>
       </Box>
+
+      <VStack>
+        {
+          classes.map(item => (
+            <Box key={item.id}>{item.name}</Box>
+          ))
+        }
+      </VStack>
     </VStack>
   )
 }
