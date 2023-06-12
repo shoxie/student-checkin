@@ -4,6 +4,7 @@ import { AiOutlineCheck } from 'react-icons/ai'
 import { useAtom } from 'jotai'
 import { classesAtom, userAtom } from '@/Utils/atom'
 import { useEffect } from 'react'
+import axios from 'axios'
 const data =
 {
   date: '2021-09-01',
@@ -85,10 +86,17 @@ export default function Home() {
     console.log("user", user)
   }, [user])
 
+  function test() {
+    // axios.post("/api/user/checkin", {
+    //   uid: "b99770aa"
+    // })
+    axios.get(`/api/user/attendances?userId=${user?.id}`)
+  }
+
   return (
     <VStack justify={"center"}>
       <Heading bgColor="gray.200" textTransform={"uppercase"} p={2} rounded="md">Điểm danh bằng thẻ</Heading>
-      <Image src={CardSwipe.src} alt="CardSwipe" />
+      <Image src={CardSwipe.src} alt="CardSwipe" onClick={test} />
       <Box minW={"60%"} border="1px" borderColor={"gray.400"}>
         <Box bg="gray.200" py="3" px="5">
           <Text>Ngày: {data.date}</Text>

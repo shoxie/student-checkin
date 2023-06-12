@@ -28,6 +28,7 @@ const SignIn = () => {
             password
         }).then(result => {
             const user = result.data
+
             setUser(user)
 
             cookies.set('user', JSON.stringify(user), { expires: 1 })
@@ -67,9 +68,9 @@ const SignIn = () => {
                 </VStack>
             </Box>
 
-            <Button onClick={() => {
+            {/* <Button onClick={() => {
                 axios.get('/api/hello')
-            }}>test</Button>
+            }}>test</Button> */}
         </HStack>
     )
 }

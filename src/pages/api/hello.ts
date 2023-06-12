@@ -10,18 +10,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const test = await prisma.user.findMany()
-  if (test.length === 0) {
-    const account = await prisma.user.create({
+  // const test = await prisma.user.findMany()
+  // if (test.length === 0) {
+    // const account = await prisma.user.create({
+    //   data: {
+    //     name: 'WhiteRose',
+    //     email: '19520377@gm.uit.edu.vn',
+    //     password: "shinniecf5",
+    //     role: "student",
+    //     uid: "b99770aa"
+    //   }
+    // })
+    const demoClass = await prisma.class.create({
       data: {
-        name: 'WhiteRose',
-        email: '19520377@gm.uit.edu.vn',
-        password: "shinniecf5",
-        role: "student",
-        uid: "b99770aa"
+        day: 1,
+        endTime: "9:00 PM",
+        startTime: "7:00 AM",
+        name: "LMAO001",
+        subject: "OOP"
       }
     })
-    res.status(200).json(account)
-  }
-  res.status(200).json(test)
+    res.status(200).json({ message: "ok"})
+  // }
+  // res.status(200).json(test)
 }

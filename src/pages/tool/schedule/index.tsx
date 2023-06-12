@@ -30,6 +30,13 @@ export default function Schedule() {
 
     useEffect(() => {
         const classes: any = {
+            "thứ 2": [],
+            "thứ 3": [],
+            "thứ 4": [],
+            "thứ 5": [],
+            "thứ 6": [],
+            "thứ 7": [],
+            "cn": [],
         }
         classData.map((item: Class) => {
             const startTime = parseTimeStringToDate(item.startTime, item.day)

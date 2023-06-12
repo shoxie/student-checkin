@@ -23,9 +23,7 @@ export default async function handler(
   });
   if (!data) {
     res.send("User not found");
-    return;
   } else {
-    res.send(data[0]);
-    return;
+    res.status(200).send(data[0]);
   }
 }

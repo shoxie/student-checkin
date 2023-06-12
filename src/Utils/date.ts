@@ -1,3 +1,5 @@
+import { parseISO, isAfter, isBefore, getHours } from 'date-fns';
+
 export function parseTimeStringToDate(timeString: string, day: number): Date {
   const currentDate: Date = new Date();
 
@@ -16,4 +18,14 @@ export function parseTimeStringToDate(timeString: string, day: number): Date {
   currentDate.setDate(currentDate.getDate() - currentDate.getDay() + day);
 
   return currentDate;
+}
+
+export function isCurrentTimeBetween(start: string, end: string, day: number): boolean {
+  const currentTime: Date = new Date();
+  const currentHour: number = getHours(currentTime);
+
+  const startHour: number = parseTimeStringToDate(start, currentTime.getDay()).getHours();
+  const endHour: number = parseTimeStringToDate(end, currentTime.getDay()).getHours();
+
+  return currentHour >= startHour && currentHour <= endHour;
 }
