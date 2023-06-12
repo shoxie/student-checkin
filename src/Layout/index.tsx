@@ -19,33 +19,32 @@ export default function SignInLayout({ children }: LayoutProps) {
     const [snapshots, loading, error] = useList(ref(database, 'students'));
     const [, setClasses] = useAtom(classesAtom)
     const [user, setUser] = useAtom(userAtom)
+    const [isInitial, setIsInitial] = useState(true);
 
     useEffect(() => {
         let user = Cookies.get('user')
-        console.log("layout", user)
         setIsSignedIn(!!user)
         if (user) {
             setUser(JSON.parse(user))
+            axios.get(`/api/classes/getAll?userId=${JSON.parse(user).id}`).then(result => {
+                setClasses(result.data ?? [])
+            })
         }
     }, [])
 
     useEffect(() => {
-
         snapshots?.map(item => {
             // console.log()
+            if (isInitial) {
+                setIsInitial(false);
+                return
+            }
             axios.post("/api/user/checkin", {
                 ...item.val()
             })
         })
 
-    }, [snapshots, loading, error])
-
-    useEffect(() => {
-        axios.get("/api/classes/getAll").then(result => {
-            setClasses(result.data ?? [])
-        })
-    }, [])
-
+    }, [snapshots])
 
 
     return (
