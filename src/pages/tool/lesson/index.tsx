@@ -1,28 +1,75 @@
 import TimeTableContainer from "@/Components/Timetable"
-import { Heading, VStack } from "@chakra-ui/react"
+import { Box, HStack, Heading, Image, SimpleGrid, Text, VStack } from "@chakra-ui/react"
 
-const data = {
-    "thứ 2": [
-        {
-            id: 1,
-            name: "Custom Event 1",
-            type: "custom",
-            startTime: new Date("2018-02-23T11:30:00"),
-            endTime: new Date("2018-02-23T13:30:00"),
-        },
-    ],
-    "thứ 3": [],
-    "thứ 4": [],
-    "thứ 5": [],
-    "thứ 6": [],
-    "thứ 7": [],
-}
+const data = [
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+    {
+        url: "/",
+        name: "Chương 1: lmao",
+        image: "https://picsum.photos/250/400"
+    },
+]
 
-export default function Schedule() {
+export default function Lectures() {
     if (typeof window === "undefined") return null
     return (
-        <VStack justify="center" w={"full"} spacing={5}>
-            <Heading bgColor="gray.200" textTransform={"uppercase"} p={2} rounded="md">Bài giảng</Heading>
-        </VStack>
+        <Box>
+            <SimpleGrid columns={5} spacing={10}>
+                {
+                    data.map((item: any, idx: number) => (
+                        <VStack key={idx}>
+                            <Image src={item.image} alt={item.name} w="full" />
+                            <Box bg="gray.200" w="full" py="3">
+                                <Text align="center">{item.name}</Text>
+                            </Box>
+                        </VStack>
+                    ))
+                }
+            </SimpleGrid>
+        </Box>
     )
 }

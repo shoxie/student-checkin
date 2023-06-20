@@ -7,78 +7,6 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { format, isDate } from 'date-fns'
 import { Class } from '@/Utils/type';
-const data =
-{
-  date: '2021-09-01',
-  classes: [
-    {
-      name: 'IT002',
-      checkin: [
-        {
-          date: null,
-          checked: false
-        },
-        {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        },
-      ]
-    },
-    {
-      name: 'PH002',
-      checkin: [
-        {
-          date: null,
-          checked: false
-        },
-        {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        },
-      ]
-    },
-    {
-      name: 'CE108',
-      checkin: [
-        {
-          date: null,
-          checked: false
-        },
-        {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        }, {
-          date: null,
-          checked: false
-        },
-      ]
-    },
-  ]
-}
 
 export default function Home() {
   const [classes] = useAtom(classesAtom)
@@ -94,7 +22,7 @@ export default function Home() {
     // axios.post("/api/user/checkin", {
     //   uid: "b99770aa"
     // })
-    axios.get(`/api/user/attendances?userId=${user?.id}`).then(result => console.log(result.data))
+    // axios.get(`/api/user/attendances?userId=${user?.id}`).then(result => console.log(result.data))
     // axios.get(`/api/classes/getAll?userId=${user?.id}`).then(result => console.log(result.data))
   }
 
@@ -131,11 +59,6 @@ export default function Home() {
                 <Text>{item.name}</Text>
               </Box>
               <HStack spacing="10">
-                {/* {item.checkin.map((checkin, idx) => (
-                <Box key={idx} w={10} h={10} border={"2px"} borderColor={"red.900"}>
-                  {checkin.checked && <AiOutlineCheck />}
-                </Box>
-              ))} */}
                 <Box key={item.id} w={10} h={10} border={"2px"} borderColor={"gray.400"}>
                   {isCheckedIn(item) && (
                     <Icon as={AiOutlineCheck} boxSize={10} color="green.200" />

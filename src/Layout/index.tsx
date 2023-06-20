@@ -56,6 +56,7 @@ export default function SignInLayout({ children }: LayoutProps) {
                 {isSignedIn && <Sidebar />}
                 <Box as="main" p="5" style={{
                     width: isSignedIn ? `calc(100% - ${sidebarWidth}px)` : "100%",
+                    height: "auto"
                 }}>{children}</Box>
             </HStack>
         </>

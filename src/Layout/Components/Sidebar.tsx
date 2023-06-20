@@ -21,7 +21,7 @@ const navigation = [
     },
     {
         name: "Bài giảng",
-        href: "/tool/schedule",
+        href: "/tool/lesson",
         icon: BsJournalText,
     },
     {
