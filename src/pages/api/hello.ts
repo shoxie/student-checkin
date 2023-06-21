@@ -33,6 +33,17 @@ export default async function handler(
         studentIds: students.map(item => item.id)
       }
     })
+
+    students.map(async (item) => {
+      await prisma.user.update({
+        where: {
+          id: item.id
+        },
+        data: {
+          classIds: [...item.classIds, demoClass.id]
+        }
+      })
+    })
     res.status(200).json({ message: "ok"})
   // }
   // res.status(200).json(test)
