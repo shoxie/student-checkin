@@ -27,5 +27,5 @@ export function isCurrentTimeBetween(start: string, end: string, day: number): b
   const startHour: number = parseTimeStringToDate(start, currentTime.getDay()).getHours();
   const endHour: number = parseTimeStringToDate(end, currentTime.getDay()).getHours();
 
-  return currentHour >= startHour && currentHour <= endHour;
+  return currentHour >= startHour && currentHour <= endHour && currentTime.getDay() === day;
 }
