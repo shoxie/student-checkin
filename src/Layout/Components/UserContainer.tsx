@@ -12,7 +12,7 @@ const UserContainer = () => {
             <Avatar style={{ width: '8rem', height: '8rem' }}  {...config} />
             <VStack bg="green.200" minW={"60%"} rounded="md" spacing="1" py="1">
                 <Text>{user?.name}</Text>
-                <Text>{user?.uid}</Text>
+                <Text>{user?.email?.split("@")[0]}</Text>
             </VStack>
         </VStack>
     )
