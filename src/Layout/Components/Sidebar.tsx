@@ -31,7 +31,7 @@ const navigation = [
     },
     {
         name: "Thông báo",
-        href: "/tool/schedule",
+        href: "/tool/notification",
         icon: BsFillBellFill,
     },
 ]

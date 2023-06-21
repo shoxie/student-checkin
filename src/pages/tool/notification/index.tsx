@@ -1,28 +1,33 @@
 import TimeTableContainer from "@/Components/Timetable"
-import { Heading, VStack } from "@chakra-ui/react"
-
-const data = {
-    "thứ 2": [
-        {
-            id: 1,
-            name: "Custom Event 1",
-            type: "custom",
-            startTime: new Date("2018-02-23T11:30:00"),
-            endTime: new Date("2018-02-23T13:30:00"),
-        },
-    ],
-    "thứ 3": [],
-    "thứ 4": [],
-    "thứ 5": [],
-    "thứ 6": [],
-    "thứ 7": [],
-}
+import { userAtom } from "@/Utils/atom"
+import { Heading, VStack, HStack } from "@chakra-ui/react"
+import axios from "axios"
+import { useAtom } from "jotai"
+import { useEffect, useState } from "react"
 
 export default function Schedule() {
-    if (typeof window === "undefined") return null
+    const [notis, setNotis] = useState<any>([])
+    const [user] = useAtom(userAtom)
+
+    useEffect(() => {
+        if (!user) return
+        axios.get(`/api/user/getAllNoti?userId=${user?.id}`).then((res) => {
+            console.log(res.data)
+            setNotis(res.data)
+        })
+    }, [user])
+
     return (
         <VStack justify="center" w={"full"} spacing={5}>
             <Heading bgColor="gray.200" textTransform={"uppercase"} p={2} rounded="md">Thông báo</Heading>
+            {
+                notis.map((item: any, idx: number) => (
+                    <HStack key={idx} w="full" justify="between">
+                        <span>{item.createdAt}</span>
+                        <span>{item.message}</span>
+                    </HStack>
+                ))
+            }
         </VStack>
     )
 }

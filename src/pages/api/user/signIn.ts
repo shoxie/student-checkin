@@ -14,7 +14,6 @@ export default async function handler(
     res.send("Not found");
   }
   const user = req.body;
-  console.log("user", user)
   const data = await prisma.user.findMany({
     where: {
       email: user.email,
@@ -22,8 +21,10 @@ export default async function handler(
     },
   });
   if (!data) {
-    res.send("User not found");
-  } else {
+    res.status(404).send({ message: "user not found" })
+  } else if (data[0].password === user.password) {
     res.status(200).send(data[0]);
+  } else {
+    res.status(401).send({ message: "wrong password"})
   }
 }

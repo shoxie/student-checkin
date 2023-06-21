@@ -36,6 +36,9 @@ const SignIn = () => {
             noti.addNoti("Đăng nhập thành công", "Đăng nhập thành công", "success", "Đóng", () => { router.push('/tool/checkin') })
 
             router.push('/tool/checkin')
+        }).catch(err => {
+            noti.addNoti("Đăng nhập lỗi", err.message, "error", "Đóng", () => { })
+
         })
     }
 

@@ -34,6 +34,10 @@ export default function SignInLayout({ children }: LayoutProps) {
     }, [])
 
     useEffect(() => {
+        setIsSignedIn(!!user)
+    }, [user])
+
+    useEffect(() => {
         snapshots?.map(item => {
             // console.log()
             if (isInitial) {
