@@ -3,7 +3,7 @@ import NotificationContainer from "@/Components/Notification";
 import { LayoutProps } from "@/Utils/interface";
 import Sidebar from "./Components/Sidebar";
 import { useAtom } from "jotai";
-import { classesAtom, sidebarWidthAtom, userAtom } from "@/Utils/atom";
+import { attAtom, classesAtom, sidebarWidthAtom, userAtom } from "@/Utils/atom";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { ref, getDatabase } from 'firebase/database';
@@ -20,6 +20,7 @@ export default function SignInLayout({ children }: LayoutProps) {
     const [, setClasses] = useAtom(classesAtom)
     const [user, setUser] = useAtom(userAtom)
     const [isInitial, setIsInitial] = useState(true);
+    const [, setAtt] = useAtom(attAtom)
 
     useEffect(() => {
         let user = Cookies.get('user')
@@ -46,7 +47,10 @@ export default function SignInLayout({ children }: LayoutProps) {
                 name: data[2]
             }
 
-            axios.post("/api/user/checkin", userData)
+            axios.post("/api/user/checkin", userData).then(() => {
+                axios.get(`/api/user/attendances?userId=${user?.id}`).then(result => setAtt(result.data))
+
+            })
         })
     }, [snapshots])
 

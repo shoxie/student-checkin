@@ -2,7 +2,7 @@ import { Box, HStack, Heading, Icon, Image, Text, VStack } from '@chakra-ui/reac
 import CardSwipe from '../../../../public/images/card-swipe.svg'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { useAtom } from 'jotai'
-import { classesAtom, userAtom } from '@/Utils/atom'
+import { attAtom, classesAtom, userAtom } from '@/Utils/atom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { format, isDate } from 'date-fns'
@@ -11,7 +11,7 @@ import { Class } from '@/Utils/type';
 export default function Home() {
   const [classes] = useAtom(classesAtom)
   const [user] = useAtom(userAtom)
-  const [att, setAtt] = useState([])
+  const [att, setAtt] = useAtom(attAtom)
 
   useEffect(() => {
     if (!user) return;
