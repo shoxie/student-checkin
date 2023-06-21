@@ -61,6 +61,12 @@ export default async function handler(
           userId: user.id
         },
       });
+      await prisma.notification.create({
+        data: {
+          message: "Diem danh thanh cong lop" + currentClass.name,
+          userId: user.id
+        }
+      })
     }
   }
 
