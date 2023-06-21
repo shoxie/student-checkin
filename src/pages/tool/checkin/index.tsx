@@ -14,9 +14,9 @@ export default function Home() {
   const [att, setAtt] = useState([])
 
   useEffect(() => {
+    if (!user) return;
     axios.get(`/api/user/attendances?userId=${user?.id}`).then(result => setAtt(result.data))
-
-  }, [])
+  }, [user])
 
   function test() {
     // axios.post("/api/user/checkin", {

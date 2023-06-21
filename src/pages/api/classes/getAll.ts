@@ -12,6 +12,7 @@ export default async function handler(
 ) {
   const { userId } = req.query
 
+  console.log(userId)
   const data = await prisma.class.findMany({
     where: {
       studentIds: {

@@ -39,11 +39,15 @@ export default function SignInLayout({ children }: LayoutProps) {
                 setIsInitial(false);
                 return
             }
-            axios.post("/api/user/checkin", {
-                ...item.val()
-            })
-        })
+            const data = item.val().Student_main.split(",")
+            const userData = {
+                Studentid: data[1],
+                uid: data[0],
+                name: data[2]
+            }
 
+            axios.post("/api/user/checkin", userData)
+        })
     }, [snapshots])
 
 
