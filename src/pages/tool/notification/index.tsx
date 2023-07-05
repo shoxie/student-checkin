@@ -2,7 +2,7 @@ import TimeTableContainer from "@/Components/Timetable"
 import { userAtom } from "@/Utils/atom"
 import { Heading, VStack, HStack } from "@chakra-ui/react"
 import axios from "axios"
-import { format } from "date-fns"
+import { format, parseISO } from "date-fns"
 import { useAtom } from "jotai"
 import { useEffect, useState } from "react"
 
@@ -24,7 +24,7 @@ export default function Schedule() {
             {
                 notis.map((item: any, idx: number) => (
                     <HStack key={idx} w="full" justify="between">
-                        <span>{format(item.createdAt, "HH:mm:ss dd/LL/yyyy")}</span>
+                        <span>{format(parseISO(item.createdAt), "HH:mm:ss dd/LL/yyyy")}</span>
                         <span>{item.message}</span>
                     </HStack>
                 ))

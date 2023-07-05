@@ -28,7 +28,7 @@ export default function SignInLayout({ children }: LayoutProps) {
         if (user) {
             setUser(JSON.parse(user))
             axios.get(`/api/classes/getAll?userId=${JSON.parse(user).id}`).then(result => {
-                setClasses(result.data.filter((item: any) => item.day === new Date().getDay()) ?? [])
+                setClasses(result.data ?? [])
             })
         }
     }, [])

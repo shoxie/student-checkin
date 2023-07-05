@@ -53,7 +53,7 @@ export default function Home() {
           <Text>Ngày: {getCurrentDate()}</Text>
         </Box>
         <VStack minW="full" py="5">
-          {classes.map((item) => (
+          {classes.filter((item: any) => item.day === new Date().getDay()).map((item) => (
             <HStack key={item.name}>
               <Box w="auto">
                 <Text>{item.name}</Text>
