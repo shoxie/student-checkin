@@ -43,26 +43,26 @@ export default function Schedule() {
             const endTime = parseTimeStringToDate(item.endTime, item.day)
             switch (item.day) {
                 case 1:
-                    classes["thứ 2"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 2"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
                 case 2:
-                    classes["thứ 3"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 3"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
                 case 3:
-                    classes["thứ 4"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 4"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
                 case 4:
-                    classes["thứ 5"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 5"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
                 case 5:
-                    classes["thứ 6"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 6"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
                 case 6:
-                    classes["thứ 7"].push({ ...item, name: `${item.name}</br>${item.subject}`, type: "custom" })
+                    classes["thứ 7"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}`, type: "custom" })
                     break;
 
                 default:
-                    classes["cn"].push({ ...item, startTime, endTime, name: `${item.name}</br>${item.subject}` })
+                    classes["cn"].push({ ...item, startTime, endTime, name: `${item.name} - ${item.subject}` })
                     break;
 
             }
@@ -77,4 +77,4 @@ export default function Schedule() {
             <TimeTableContainer data={timetable} />
         </VStack>
     )
-}
+}  
