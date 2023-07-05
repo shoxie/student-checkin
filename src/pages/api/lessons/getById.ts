@@ -13,21 +13,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const userId = req.query.userId;
+  const id = req.query.id;
 
-  const attendances = await prisma.attendance.findMany({
+  const lessons = await prisma.classMaterial.findUnique({
     where: {
-      userId: userId as string,
-      createdAt: {
-        lte: endOfDay(new Date()) as Date,
-        gte: startOfDay(new Date()) as Date
-      }
-
-    },
-    include: {
-      class: true,
+        id: id as string
     },
   });
   
-  res.status(200).send(attendances);
+  res.status(200).send(lessons);
 }
