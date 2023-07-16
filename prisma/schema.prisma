@@ -25,6 +25,7 @@ model User {
   classes       Class[]        @relation(fields: [classIds], references: [id])
   attendences   Attendance[]
   notifications Notification[]
+  Assignment    Assignment[]
 }
 
 model Attendance {
@@ -54,12 +55,13 @@ model Class {
 }
 
 model ClassMaterial {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  type      String
-  url       String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  type       String
+  url        String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Assignment Assignment[]
 }
 
 model Notification {
@@ -68,4 +70,17 @@ model Notification {
   User      User?    @relation(fields: [userId], references: [id])
   userId    String?  @db.ObjectId
   createdAt DateTime @default(now())
+}
+
+model Assignment {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  score           Int?
+  isMarked        Boolean
+  user            User          @relation(fields: [userId], references: [id])
+  classMaterial   ClassMaterial @relation(fields: [classMaterialId], references: [id])
+  userId          String        @db.ObjectId
+  classMaterialId String        @db.ObjectId
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  fileName        String
 }
