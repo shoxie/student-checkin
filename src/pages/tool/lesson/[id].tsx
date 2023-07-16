@@ -89,15 +89,6 @@ const LessonDetail = () => {
 
     return (
         <Box w="full">
-            <form onSubmit={onSubmit}>
-                <FormControl isInvalid={!!errors.file_} isRequired>
-                    <FileUpload accept={'.pdf'}
-                        multiple={false}
-                        register={register('file_', { validate: validateFiles })}>
-                        <Button type="submit"><Icon as={FaUpload} /></Button>
-                    </FileUpload>
-                </FormControl>
-            </form>
             <Box>
                 <object data={`/static/${data.name}`} style={{
                     width: "100%",
@@ -110,6 +101,19 @@ const LessonDetail = () => {
                     <Text>Điểm: </Text>
                     <Input value={userAssignment?.score ?? 0} bg={"gray.200"} />
                 </Box>
+                {
+                    !userAssignment && (
+                        <form onSubmit={onSubmit}>
+                            <FormControl isInvalid={!!errors.file_} isRequired>
+                                <FileUpload accept={'.pdf'}
+                                    multiple={false}
+                                    register={register('file_', { validate: validateFiles })}>
+                                    <Button type="submit"><Icon as={FaUpload} /></Button>
+                                </FileUpload>
+                            </FormControl>
+                        </form>
+                    )
+                }
                 {!userAssignment && user && user.role !== "teacher" && (<Text>{user?.name} chưa nộp bài</Text>)}
                 {
                     userAssignment && (

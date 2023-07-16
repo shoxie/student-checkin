@@ -24,6 +24,22 @@ export default async function handler(
         isMarked: true
     }
   });
+  const data = await prisma.assignment.findFirst({
+    where: {
+        id: id as string
+    },
+    include: {
+      classMaterial: true,
+      user: true
+    }
+  });
+
+  await prisma.notification.create({
+    data: {
+      message: `Bài nộp cho ${data?.classMaterial.name} đã được chấm điểm`,
+      userId: data?.userId
+    }
+  })
   
   res.status(200).send(lessons);
 }
